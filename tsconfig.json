@@ -8,7 +8,7 @@
 		"allowSyntheticDefaultImports": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"noEmit": true,
+		"noEmit": false,
 		"jsx": "react-jsx",
 		"importHelpers": true,
 		"declaration": true,
