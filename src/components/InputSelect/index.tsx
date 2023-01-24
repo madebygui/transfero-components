@@ -4,7 +4,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import { Typo } from '../Typo';
-import { InputSelectProps } from './InputSelect';
+import { InputSelectProps } from './InputSelect.types';
 
 const InputSelect: React.FC<InputSelectProps> = ({
   onChangeText,
@@ -68,4 +68,4 @@ const InputSelect: React.FC<InputSelectProps> = ({
   );
 };
 
-export default InputSelect;
+export { InputSelect };

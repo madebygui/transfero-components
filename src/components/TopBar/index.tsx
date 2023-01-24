@@ -4,7 +4,7 @@ import React from 'react';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { Button } from '../Button';
 import { Typo } from '../Typo';
-import { TopBarProps } from './TopBar';
+import { TopBarProps } from './TopBar.types';
 
 const TopBar: React.FC<TopBarProps> = ({ title, centerText, width, toggleMenu }) => {
   const { palette } = useTheme();

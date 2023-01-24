@@ -9,7 +9,7 @@ import {
   VictoryScatter,
 } from 'victory';
 import { useTheme } from '@mui/system';
-import { IAreaChart, IAreaChartData } from './AreaChart';
+import { IAreaChart, IAreaChartData } from './AreaChart.types';
 import { NavigatorComponent } from './NavigatorComponent';
 import { DateTime } from 'luxon';
 import { Typo } from '../../Typo';

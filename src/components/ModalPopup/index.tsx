@@ -1,11 +1,11 @@
+import { FC } from 'react';
 import { Box, useTheme } from '@mui/material';
-import React from 'react';
 import { globalStyles } from '../../config/theme/globalStyles';
 import { Button } from '../Button';
 import { Typo } from '../Typo';
-import { IModalPopup } from './ModalPopup';
+import { IModalPopup } from './ModalPopup.types';
 
-const ModalPopup: React.FC<IModalPopup> = ({ title, text, onCancel, onConfirm, alert }) => {
+const ModalPopup: FC<IModalPopup> = ({ title, text, onCancel, onConfirm, alert }) => {
   const { palette } = useTheme();
 
   return (

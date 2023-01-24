@@ -1,5 +1,6 @@
+import { ReactElement } from 'react';
 import { IconTypes } from '../../config/types/iconTypes';
-import { TypographyTypes } from '../Typo/Typo';
+import { TypographyTypes } from '../Typo/Typo.types';
 
 export interface BaseButton {
   children?: string | ReactElement;

@@ -1,5 +1,4 @@
-// import { IPerformanceChart, PeriodsChart } from '@src/models/performance';
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DateTime } from 'luxon';
 import { PeriodsChart } from '../../../config/types/periods';
 
@@ -11,7 +10,7 @@ export interface IAreaChart {
         date: string;
       }[]
     | undefined;
-  changeActivePoint: (number) => void;
+  changeActivePoint: (number: any) => void;
   initialDate: DateTime;
   endDate: DateTime;
   theme?: 'dark' | 'light';

@@ -1,6 +1,6 @@
 import { Box } from '@mui/system';
 import React from 'react';
-import { TemplateProps } from './Template';
+import { TemplateProps } from './Template.types';
 
 const Template: React.FC<TemplateProps> = ({ children }) => {
   return (

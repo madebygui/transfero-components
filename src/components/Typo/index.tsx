@@ -1,5 +1,5 @@
 import React from 'react';
-import { TypographyTypes } from './Typo';
+import { TypographyTypes } from './Typo.types';
 import { Typography } from '@mui/material';
 
 const Typo: React.FC<TypographyTypes> = ({

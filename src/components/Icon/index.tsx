@@ -8,4 +8,4 @@ interface OverrideIconProps extends IconProps {
 
 const Icon = (props: OverrideIconProps) => <IcoMoon iconSet={iconSet} {...props} />;
 
-export default Icon;
+export { Icon };

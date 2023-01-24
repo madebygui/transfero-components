@@ -1,9 +1,9 @@
 import React from 'react';
 import { Typo } from '../Typo';
-import { ButtonTypes, TextSize } from './Button';
+import { ButtonTypes, TextSize } from './Button.types';
 import { Box, ButtonBase, useTheme } from '@mui/material';
 import Icon from '../Icon';
-import { TypographyTypes } from '../Typo/Typo';
+import { TypographyTypes } from '../Typo/Typo.types';
 
 const Button: React.FC<ButtonTypes> = ({
   children,

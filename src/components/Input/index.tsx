@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, TextField, useTheme } from '@mui/material';
-import { InputProps } from './Input';
+import { InputProps } from './Input.types';
 import { Typo } from '../Typo';
-import Icon from '../Icon';
+import { Icon } from '../Icon';
 import { Button } from '../Button';
 
-const Input: React.FC<InputProps> = ({
+const Input = ({
   onChangeText,
   value,
   placeholder,
@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({
   title,
   error,
   password,
-}) => {
+}: InputProps) => {
   const { palette } = useTheme();
 
   const [isFocused, setIsFocused] = useState(false);
@@ -220,4 +220,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export { Input };

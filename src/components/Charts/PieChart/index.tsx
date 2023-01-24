@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { VictoryPie } from 'victory';
 import Label from './Label';
-import { IContent } from './PieChart';
+import { IContent } from './PieChart.types';
 
 interface Props {
   items: IContent[];

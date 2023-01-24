@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useTheme } from '@mui/system';
 import { useEffect, useRef, useState } from 'react';
-import { NavigatorComponentProps } from './AreaChart';
+import { NavigatorComponentProps } from './AreaChart.types';
 
 interface PositionProps {
   x: number;
