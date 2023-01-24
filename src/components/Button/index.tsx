@@ -2,7 +2,7 @@ import React from 'react';
 import { Typo } from '../Typo';
 import { ButtonTypes, TextSize } from './Button.types';
 import { Box, ButtonBase, useTheme } from '@mui/material';
-import Icon from '../Icon';
+import { Icon } from '../Icon';
 import { TypographyTypes } from '../Typo/Typo.types';
 
 const Button: React.FC<ButtonTypes> = ({
