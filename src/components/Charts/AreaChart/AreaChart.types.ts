@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DateTime } from 'luxon';
-import { PeriodsChart } from '../../../config/types/periods';
+import { PeriodsChart } from '../../../config/types/periods.types';
 
 export interface IAreaChart {
   periodActive: PeriodsChart;

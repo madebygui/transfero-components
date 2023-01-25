@@ -1,11 +1,14 @@
 import { FC } from 'react';
-import { Box, useTheme } from '@mui/material';
+import { Box, useTheme, StyledEngineProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '../../config/theme';
 import { globalStyles } from '../../config/theme/globalStyles';
 import { Button } from '../Button';
 import { Typo } from '../Typo';
 import { IModalPopup } from './ModalPopup.types';
+import '../../assets/css/Popup.css';
 
-const ModalPopup: FC<IModalPopup> = ({ title, text, onCancel, onConfirm, alert }) => {
+const ModalPopupComponent: FC<IModalPopup> = ({ title, text, onCancel, onConfirm, alert }) => {
   const { palette } = useTheme();
 
   return (
@@ -40,6 +43,22 @@ const ModalPopup: FC<IModalPopup> = ({ title, text, onCancel, onConfirm, alert }
         )}
       </Box>
     </Box>
+  );
+};
+
+const ModalPopup: React.FC<IModalPopup> = ({ title, text, onCancel, onConfirm, alert }) => {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <ModalPopupComponent
+          title={title}
+          text={text}
+          onCancel={onCancel}
+          onConfirm={onConfirm}
+          alert={alert}
+        />
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-import { AppBar, Box, Toolbar, useTheme } from '@mui/material';
 import React from 'react';
+import { AppBar, Box, Toolbar, useTheme, StyledEngineProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '../../config/theme';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { Button } from '../Button';
 import { Typo } from '../Typo';
 import { TopBarProps } from './TopBar.types';
 
-const TopBar: React.FC<TopBarProps> = ({ title, centerText, width, toggleMenu }) => {
+const TopBarComponent: React.FC<TopBarProps> = ({ title, centerText, width, toggleMenu }) => {
   const { palette } = useTheme();
   const dimensions = useWindowDimensions();
 
@@ -57,6 +59,21 @@ const TopBar: React.FC<TopBarProps> = ({ title, centerText, width, toggleMenu })
         {dimensions.width >= 500 && <Box style={{ width: '30%' }} />}
       </Toolbar>
     </AppBar>
+  );
+};
+
+const TopBar: React.FC<TopBarProps> = ({ title, centerText, width, toggleMenu }) => {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <TopBarComponent
+          title={title}
+          centerText={centerText}
+          width={width}
+          toggleMenu={toggleMenu}
+        />
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

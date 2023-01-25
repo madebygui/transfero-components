@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Box, SelectChangeEvent, useTheme } from '@mui/material';
+import { Box, SelectChangeEvent, useTheme, StyledEngineProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '../../config/theme';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import { Typo } from '../Typo';
 import { InputSelectProps } from './InputSelect.types';
+import '../../assets/css/InputSelect.css';
 
-const InputSelect: React.FC<InputSelectProps> = ({
+const InputSelectComponent: React.FC<InputSelectProps> = ({
   onChangeText,
   value,
   placeholder,
@@ -65,6 +68,32 @@ const InputSelect: React.FC<InputSelectProps> = ({
         </Select>
       </FormControl>
     </Box>
+  );
+};
+
+const InputSelect: React.FC<InputSelectProps> = ({
+  onChangeText,
+  value,
+  placeholder,
+  items = [],
+  required,
+  error,
+  width,
+}) => {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <InputSelectComponent
+          onChangeText={onChangeText}
+          value={value}
+          placeholder={placeholder}
+          items={items}
+          required={required}
+          error={error}
+          width={width}
+        />
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

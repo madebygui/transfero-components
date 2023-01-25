@@ -1,0 +1,64 @@
+.loader-container {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.grid-background {
+  position: absolute;
+}
+
+.loader {
+  width: 112px;
+  height: 112px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-square {
+  transform: rotate(45deg);
+  width: 79px;
+  height: 79px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  overflow: hidden;
+}
+
+.loader-animation-bg-square {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  background: #1a0e38;
+  background: -moz-linear-gradient(0deg, #1a0e38 0%, #3f3ff9 50%, #ffffff 90%);
+  background: -webkit-linear-gradient(0deg, #1a0e38 0%, #3f3ff9 50%, #ffffff 90%);
+  background: linear-gradient(0deg, #1a0e38 0%, #3f3ff9 50%, #ffffff 90%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1a0e38",endColorstr="#ffffff",GradientType=1);
+  animation: animationLoader 1s infinite linear;
+}
+
+.internal-loader-square {
+  width: 77px;
+  height: 77px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+@keyframes animationLoader {
+  to {
+    transform: rotate(360deg);
+  }
+}

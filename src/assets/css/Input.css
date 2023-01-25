@@ -1,0 +1,3 @@
+.input-error .MuiInput-root:before {
+  border-color: #e55250 !important;
+}

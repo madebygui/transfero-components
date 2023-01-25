@@ -1,0 +1,95 @@
+/*Button.module.css file*/
+.btnSm {
+  width: 179px;
+  height: 40px;
+}
+
+.btnMd {
+  width: 208px;
+  height: 48px;
+}
+
+.btnLg {
+  margin-left: 0;
+  margin-right: 0;
+  width: 327px;
+  height: 64px;
+}
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.outline {
+  border-width: 1px;
+  border-color: #1a0e38;
+  background-color: transparent;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  margin: 16px;
+}
+
+.link.btnLg {
+  width: 180px;
+  height: 64px;
+}
+
+.btnIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 64px;
+  height: 64px;
+  margin: 0;
+}
+
+.btnIconCircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 64px;
+  height: 64px;
+  border-radius: 36px;
+  background-color: #3f3ff9;
+  box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.15);
+  margin: 16px;
+}
+
+.square {
+  width: 45.25px;
+  height: 45.25px;
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.btn-period {
+  width: 60px !important;
+  padding: 0 !important;
+  margin-right: 8px !important;
+}
+
+.btn-period.active {
+  background-color: #f4f3f5;
+}
+
+.btn-period.inactive {
+  background-color: #3f3ff9;
+}
+
+@media (max-width: 500px) {
+  .btn-period {
+    width: 48px !important;
+    margin-right: 4px !important;
+  }
+}

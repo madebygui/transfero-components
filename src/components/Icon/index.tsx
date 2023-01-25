@@ -1,5 +1,5 @@
 import IcoMoon, { IconProps } from 'react-icomoon';
-import { IconTypes } from '../../config/types/iconTypes';
+import { IconTypes } from '../../config/types/iconTypes.types';
 import iconSet from './selection.json';
 
 interface OverrideIconProps extends IconProps {

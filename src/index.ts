@@ -9,6 +9,7 @@ import { ModalPopup } from './components/ModalPopup';
 import { Template } from './components/Template';
 import { TopBar } from './components/TopBar';
 import { Typo } from './components/Typo';
+import './assets/css/Main.css';
 
 export {
   Button,

@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Box, TextField, useTheme } from '@mui/material';
+import { useEffect, useState, FC } from 'react';
+import { Box, StyledEngineProvider, TextField, useTheme } from '@mui/material';
+import theme from '../../config/theme';
+import { ThemeProvider } from '@mui/material/styles';
 import { InputProps } from './Input.types';
 import { Typo } from '../Typo';
 import { Icon } from '../Icon';
 import { Button } from '../Button';
+import '../../assets/css/Input.css';
 
-const Input = ({
+const InputComponent: FC<InputProps> = ({
   onChangeText,
   value,
   placeholder,
@@ -20,7 +23,7 @@ const Input = ({
   title,
   error,
   password,
-}: InputProps) => {
+}) => {
   const { palette } = useTheme();
 
   const [isFocused, setIsFocused] = useState(false);
@@ -217,6 +220,46 @@ const Input = ({
         helperText={error}
       />
     </Box>
+  );
+};
+
+const Input: FC<InputProps> = ({
+  onChangeText,
+  value,
+  placeholder,
+  multline,
+  autoCapitalize = 'sentences',
+  maskType,
+  required,
+  disabled,
+  type,
+  fullWidth,
+  iconRight,
+  title,
+  error,
+  password,
+}) => {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <InputComponent
+          onChangeText={onChangeText}
+          value={value}
+          placeholder={placeholder}
+          multline={multline}
+          autoCapitalize={autoCapitalize}
+          maskType={maskType}
+          required={required}
+          disabled={disabled}
+          type={type}
+          fullWidth={fullWidth}
+          iconRight={iconRight}
+          title={title}
+          error={error}
+          password={password}
+        />
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 
