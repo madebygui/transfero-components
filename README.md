@@ -19,8 +19,10 @@ v8.16.0
 
 All libraries are installed automatically. No commands are needed.
 
-> <b style="color: #00CCCC">Material UI</b> @emotion/react, @emotion/styled, @mui/material
-> <br> [Homepage](https://mui.com/) <br><br> <b style="color: #00CCCC">Luxon</b> <br> [Homepage](https://moment.github.io/luxon/#/) <br><br> <b style="color: #00CCCC">Icomoon</b> react-icomoon <br> [Homepage](https://github.com/aykutkardas/react-icomoon) <br><br> <b style="color: #00CCCC">Victory</b> <br> [Homepage](https://formidable.com/open-source/victory/)
+- [Material UI - @emotion/react, @emotion/styled, @mui/material](https://mui.com/)
+- [Luxon](https://moment.github.io/luxon/#/)
+- [Icomoon](https://github.com/aykutkardas/react-icomoon)
+- [Victory](https://formidable.com/open-source/victory/)
 
 ## Table of contents
 
@@ -29,6 +31,12 @@ All libraries are installed automatically. No commands are needed.
   - [Table of contents](#table-of-contents)
   - [Getting Started](#getting-started)
   - [Installation](#installation)
+    - [Windows](#windows)
+    - [Other OS](#other-os)
+      - [Step 1](#step-1)
+      - [Step 2](#step-2)
+      - [Step 3](#step-3)
+    - [Install](#install)
   - [Usage](#usage)
     - [Example](#example)
     - [Button](#button)
@@ -61,16 +69,71 @@ These instructions will get you a copy of the project up and running on your loc
 
 **BEFORE YOU INSTALL:** please read the [prerequisites](#prerequisites)
 
-To install and set up the library, run:
+To install and set up the library:
 
-```sh
-$ npm install transfero-components --save
+Create a `.npmrc` file in root directory (at the same level of package.json).
+
+Insert the bellow code:
+
+```properties
+registry=https://pkgs.dev.azure.com/transferolabs/_packaging/transfero-react-components/npm/registry/
+always-auth=true
 ```
 
-Or if you prefer using Yarn:
+#### Windows:
+
+If you're developing on Windows, we recommend using `vsts-npm-auth` to authenticate with Azure Artifacts. Run `npm install -g vsts-npm-auth` to install the package globally and then add a run script to your package.json.
+
+```json
+"scripts": {
+    "refreshVSToken": "vsts-npm-auth -config .npmrc"
+}
+```
+
+#### Other OS:
+
+##### Step 1
+
+Generate a [personal access token](https://dev.azure.com/transferolabs/_usersSettings/tokens) with _Packaging_ read and write scopes.
+
+##### Step 2
+
+Base64 encode the personal access token from Step 1.
+
+One safe and secure method of Base64 encoding a string is to:
+
+1. From a command/shell prompt run:
+
+```
+node -e "require('readline') .createInterface({input:process.stdin,output:process.stdout,historySize:0}) .question('PAT> ',p => { b64=Buffer.from(p.trim()).toString('base64');console.log(b64);process.exit(); })"
+```
+
+2. Paste your personal access token value and press Enter/Return
+3. Copy the Base64 encoded value
+
+##### Step 3
+
+Copy the following code snippet to your `.npmrc` file (default location: `/Users/user/.npmrc`).
+
+```properties
+; begin auth token
+//pkgs.dev.azure.com/transferolabs/_packaging/transfero-react-components/npm/registry/:username=tra$
+//pkgs.dev.azure.com/transferolabs/_packaging/transfero-react-components/npm/registry/:_password=[BASE64_ENCODED_PERSONAL_ACCESS_TOKEN]
+//pkgs.dev.azure.com/transferolabs/_packaging/transfero-react-components/npm/registry/:email=npm requires email to be set but doesn't use the value
+//pkgs.dev.azure.com/transferolabs/_packaging/transfero-react-components/npm/:username=transferolabs
+//pkgs.dev.azure.com/transferolabs/_packaging/transfero-react-components/npm/:_password=[BASE64_ENCODED_PERSONAL_ACCESS_TOKEN]
+//pkgs.dev.azure.com/transferolabs/_packaging/transfero-react-components/npm/:email=npm requires email to be set but doesn't use the value
+; end auth token
+```
+
+Replace _both_ `[BASE64_ENCODED_PERSONAL_ACCESS_TOKEN]` values in your user `.npmrc` file with your personal access token from Step 2.
+
+### Install
+
+Run the commands below:
 
 ```sh
-$ yarn add transfero-components
+$ npm install transfero-react-components --save
 ```
 
 ## Usage

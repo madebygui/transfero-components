@@ -1,7 +1,7 @@
 {
-  "name": "transfero-components",
-  "version": "1.0.23",
-  "description": "",
+  "name": "transfero-react-components",
+  "version": "1.0.26",
+  "description": "This is Transfero Components in React.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
@@ -59,14 +59,15 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c --bundleConfigAsCjs && yarn copy-assets",
+    "build": "rollup -c --bundleConfigAsCjs && yarn copy-assets && yarn copy-npmrc",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prebuild": "rimraf ./dist",
-    "prepublish": "rollup -c --bundleConfigAsCjs && yarn copy-assets",
+    "prepublish": "rollup -c --bundleConfigAsCjs && yarn copy-assets && yarn copy-npmrc",
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
-    "copy-assets": "copyfiles --all --up 1 --exclude \"./**/*.{ts,tsx}\" \"./src/assets/**/*\" ./dist/esm"
+    "copy-assets": "copyfiles --all --up 1 --exclude \"./**/*.{ts,tsx}\" \"./src/assets/**/*\" ./dist/esm",
+    "copy-npmrc": "copyfiles --all ./.npmrc dist"
   },
   "keywords": [],
   "author": "Guilherme Miranda (madebygui)",
