@@ -13,9 +13,11 @@ import { IAreaChart, IAreaChartData } from './AreaChart.types';
 import { NavigatorComponent } from './NavigatorComponent';
 import { DateTime } from 'luxon';
 import { Typo } from '../../Typo';
-import { Box } from '@mui/material';
+import { Box, StyledEngineProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import thm from '../../../config/theme';
 
-const AreaChart: React.FC<IAreaChart> = React.memo(
+const AreaChartComponent: React.FC<IAreaChart> = React.memo(
   ({ periodActive, data, changeActivePoint, initialDate, endDate, theme }) => {
     const [containerWidth, setContainerWidth] = useState<number>(0);
     const [containerPosition, setContainerPosition] = useState({
@@ -190,5 +192,29 @@ const AreaChart: React.FC<IAreaChart> = React.memo(
     );
   },
 );
+
+const AreaChart: React.FC<IAreaChart> = ({
+  periodActive,
+  data,
+  changeActivePoint,
+  initialDate,
+  endDate,
+  theme,
+}) => {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={thm}>
+        <AreaChartComponent
+          periodActive={periodActive}
+          data={data}
+          changeActivePoint={changeActivePoint}
+          initialDate={initialDate}
+          endDate={endDate}
+          theme={theme}
+        />
+      </ThemeProvider>
+    </StyledEngineProvider>
+  );
+};
 
 export { AreaChart };

@@ -1,12 +1,14 @@
 import React from 'react';
-import { Box, ButtonBase, useTheme } from '@mui/material';
+import { Box, ButtonBase, StyledEngineProvider, useTheme } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import thm from '../../config/theme';
 import { Typo } from '../Typo';
 import { ButtonTypes, TextSize } from './Button.types';
 import { Icon } from '../Icon';
 import { TypographyTypes } from '../Typo/Typo.types';
 import '../../assets/css/Button.css';
 
-const Button: React.FC<ButtonTypes> = ({
+const ButtonComponent: React.FC<ButtonTypes> = ({
   children,
   onClick,
   size,
@@ -37,7 +39,7 @@ const Button: React.FC<ButtonTypes> = ({
   const color = () => {
     const colors = {
       dark: { backgroundColor: 'white' },
-      light: { backgroundColor: palette.blue['900'] },
+      light: { backgroundColor: palette.blue[900] },
       disabled: { backgroundColor: palette.gray[200] },
       outlineDark: {
         borderWidth: 1,
@@ -48,7 +50,7 @@ const Button: React.FC<ButtonTypes> = ({
       outlineLight: {
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: palette.blue['900'],
+        borderColor: palette.blue[900],
         backgroundColor: 'transparent',
       },
       disabledOutline: {
@@ -57,7 +59,7 @@ const Button: React.FC<ButtonTypes> = ({
         borderColor: palette.gray[400],
         backgroundColor: 'transparent',
       },
-      default: { backgroundColor: palette.blue['900'] },
+      default: { backgroundColor: palette.blue[900] },
     };
 
     if (disabled) {
@@ -83,7 +85,7 @@ const Button: React.FC<ButtonTypes> = ({
       light: 'white',
       disabled: palette.gray[600],
       outlineDark: 'white',
-      outlineLight: palette.blue['900'],
+      outlineLight: palette.blue[900],
       disabledOutline: palette.gray[400],
       default: 'white',
     };
@@ -182,7 +184,7 @@ const Button: React.FC<ButtonTypes> = ({
           <Icon
             icon={icon}
             size={24}
-            color={outline ? palette.blue['900'] : textColorFn()}
+            color={outline ? palette.blue[900] : textColorFn()}
             style={{ position: 'relative' }}
           />
           ;
@@ -201,7 +203,7 @@ const Button: React.FC<ButtonTypes> = ({
         <Icon
           icon={icon}
           size={24}
-          color={outline ? palette.blue['900'] : textColorFn()}
+          color={outline ? palette.blue[900] : textColorFn()}
           style={{ position: 'relative' }}
         />
       </ButtonBase>
@@ -241,6 +243,47 @@ const Button: React.FC<ButtonTypes> = ({
         )}
       </>
     </ButtonBase>
+  );
+};
+
+const Button: React.FC<ButtonTypes> = ({
+  children,
+  onClick,
+  size,
+  icon,
+  iconsize,
+  outline,
+  disabled,
+  theme,
+  link,
+  circle,
+  style,
+  iconColor,
+  textColor,
+  className,
+}) => {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={thm}>
+        <ButtonComponent
+          onClick={onClick}
+          size={size}
+          icon={icon}
+          iconsize={iconsize}
+          outline={outline}
+          disabled={disabled}
+          theme={theme}
+          link={link}
+          circle={circle}
+          style={style}
+          iconColor={iconColor}
+          textColor={textColor}
+          className={className}
+        >
+          {children}
+        </ButtonComponent>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

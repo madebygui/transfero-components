@@ -1,5 +1,7 @@
-import { Box } from '@mui/material';
+import { Box, StyledEngineProvider } from '@mui/material';
 import { VictoryPie } from 'victory';
+import { ThemeProvider } from '@mui/material/styles';
+import thm from '../../../config/theme';
 import Label from './Label';
 import { IContent } from './PieChart.types';
 
@@ -8,7 +10,7 @@ interface Props {
   theme?: 'dark' | 'light';
 }
 
-const PieChart: React.FC<Props> = (prop) => {
+const PieChartComponent: React.FC<Props> = (prop) => {
   const radius = 140;
   const innerRadius = 80;
 
@@ -26,6 +28,16 @@ const PieChart: React.FC<Props> = (prop) => {
         labelComponent={<Label radius={radius} cx={227} cy={200} theme={prop?.theme} />}
       />
     </Box>
+  );
+};
+
+const PieChart: React.FC<Props> = ({ items, theme }) => {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={thm}>
+        <PieChartComponent items={items} theme={theme} />
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

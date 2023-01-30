@@ -24,7 +24,7 @@ export interface Icon extends BaseButton {
 }
 
 export interface Children extends BaseButton {
-  children: string | ReactElement;
+  children: string | ReactElement | undefined;
 }
 
 export type ButtonTypes = Icon | Children;
