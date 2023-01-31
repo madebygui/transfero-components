@@ -2,11 +2,11 @@ import { useEffect, useState, FC } from 'react';
 import { Box, StyledEngineProvider, TextField, useTheme } from '@mui/material';
 import theme from '../../config/theme';
 import { ThemeProvider } from '@mui/material/styles';
+import '../../assets/css/Input.css';
 import { InputProps } from './Input.types';
-import { Typo } from '../Typo';
 import { Icon } from '../Icon';
 import { Button } from '../Button';
-import '../../assets/css/Input.css';
+import { Typo } from '../Typo';
 
 const InputComponent: FC<InputProps> = ({
   onChangeText,
@@ -18,11 +18,13 @@ const InputComponent: FC<InputProps> = ({
   required,
   disabled,
   type,
-  fullWidth,
   iconRight,
   title,
-  error,
+  error = '',
   password,
+  style,
+  inputStyle,
+  iconLeft,
 }) => {
   const { palette } = useTheme();
 
@@ -185,7 +187,7 @@ const InputComponent: FC<InputProps> = ({
   };
 
   return (
-    <Box>
+    <Box sx={{ ...style }}>
       <Typo
         fontWeight='700'
         size='md'
@@ -204,17 +206,19 @@ const InputComponent: FC<InputProps> = ({
         variant='standard'
         value={value}
         onChange={(text) => changeValue(text.target.value)}
-        fullWidth={fullWidth}
         autoCapitalize={autoCapitalize}
         multiline={multline}
+        fullWidth
         rows={6}
         className={error !== '' ? 'input-error' : undefined}
         type={password && !showPassword ? 'password' : type || 'text'}
         inputProps={{
           autoComplete: 'new-password',
+          style: { ...{ paddingLeft: iconLeft ? '8px' : '0px' }, ...inputStyle },
         }}
         InputProps={{
           endAdornment: rightIcon(),
+          startAdornment: iconLeft,
           style: { fontFamily: 'Montserrat' },
         }}
         helperText={error}
@@ -233,11 +237,13 @@ const Input: FC<InputProps> = ({
   required,
   disabled,
   type,
-  fullWidth,
   iconRight,
   title,
   error,
   password,
+  style,
+  inputStyle,
+  iconLeft,
 }) => {
   return (
     <StyledEngineProvider injectFirst>
@@ -252,11 +258,13 @@ const Input: FC<InputProps> = ({
           required={required}
           disabled={disabled}
           type={type}
-          fullWidth={fullWidth}
           iconRight={iconRight}
           title={title}
           error={error}
           password={password}
+          style={style}
+          inputStyle={inputStyle}
+          iconLeft={iconLeft}
         />
       </ThemeProvider>
     </StyledEngineProvider>

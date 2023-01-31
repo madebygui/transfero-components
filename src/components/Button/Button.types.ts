@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { IconTypes } from '../../config/types/iconTypes.types';
 import { TypographyTypes } from '../Typo/Typo.types';
-
 export interface BaseButton {
   children?: string | ReactElement;
   onClick: () => void;
@@ -15,6 +14,7 @@ export interface BaseButton {
   circle?: boolean;
   style?: React.CSSProperties | undefined;
   iconColor?: string;
+  iconPosition?: 'left' | 'right';
   textColor?: string;
   className?: string;
 }

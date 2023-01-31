@@ -18,8 +18,9 @@ export interface InputProps {
   disabled?: boolean;
   type?: 'text' | 'number' | 'date';
   style?: React.CSSProperties;
-  fullWidth?: boolean;
+  inputStyle?: React.CSSProperties;
   iconRight?: React.ReactNode;
+  iconLeft?: React.ReactNode;
   title: string;
   error?: string;
   password?: boolean;

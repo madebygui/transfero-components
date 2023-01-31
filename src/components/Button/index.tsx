@@ -23,6 +23,7 @@ const ButtonComponent: React.FC<ButtonTypes> = ({
   iconColor,
   textColor,
   className,
+  iconPosition = 'right',
 }) => {
   const { palette } = useTheme();
   const buttonSize = () => {
@@ -153,14 +154,25 @@ const ButtonComponent: React.FC<ButtonTypes> = ({
     return (
       <ButtonBase
         disabled={disabled}
-        onClick={() => onClick()}
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick();
+        }}
         sx={style}
         className={`link ${buttonSize()} ${className}`}
       >
+        {icon && iconPosition === 'left' && (
+          <Icon
+            icon={icon}
+            size={setIconSize()}
+            color={iconColor || textColorLink()}
+            style={{ marginRight: 5 }}
+          />
+        )}
         <Typo size={linkTextSize()} fontWeight='600' color={textColor || textColorLink()} uppercase>
           {children}
         </Typo>
-        {icon && (
+        {icon && iconPosition === 'right' && (
           <Icon
             icon={icon}
             size={setIconSize()}
@@ -179,7 +191,10 @@ const ButtonComponent: React.FC<ButtonTypes> = ({
           disabled={disabled}
           className={`btnIconCircle ${className}`}
           sx={style}
-          onClick={() => onClick()}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClick();
+          }}
         >
           <Icon
             icon={icon}
@@ -187,7 +202,6 @@ const ButtonComponent: React.FC<ButtonTypes> = ({
             color={outline ? palette.blue[900] : textColorFn()}
             style={{ position: 'relative' }}
           />
-          ;
         </ButtonBase>
       );
     }
@@ -197,7 +211,10 @@ const ButtonComponent: React.FC<ButtonTypes> = ({
         disabled={disabled}
         className={`btnIcon ${className}`}
         sx={style}
-        onClick={() => onClick()}
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick();
+        }}
       >
         <Box sx={color()} className='square' />
         <Icon
@@ -215,12 +232,23 @@ const ButtonComponent: React.FC<ButtonTypes> = ({
       disabled={disabled}
       className={`btn ${buttonSize()} ${className}`}
       sx={{ ...color(), ...style }}
-      onClick={() => onClick()}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
     >
       <>
         {/* This Box it's a fake component to distribute items equaly, when have icon. */}
         {/* It needs to have a empty Box to center text. */}
-        {icon ? <Box style={{ width: setIconSize() }} /> : <Box />}
+        {icon && iconPosition === 'left' && (
+          <Icon
+            icon={icon}
+            size={setIconSize()}
+            color={textColorFn()}
+            style={{ position: 'relative' }}
+          />
+        )}
+        {icon && iconPosition === 'right' ? <Box style={{ width: setIconSize() }} /> : <Box />}
         <Typo
           size={size === 'sm' ? 'xxs' : 'xs'}
           fontWeight='700'
@@ -231,16 +259,15 @@ const ButtonComponent: React.FC<ButtonTypes> = ({
           {children}
         </Typo>
         {/* It needs to have a empty Box to center text. */}
-        {icon ? (
+        {icon && iconPosition === 'right' && (
           <Icon
             icon={icon}
             size={setIconSize()}
             color={textColorFn()}
             style={{ position: 'relative' }}
           />
-        ) : (
-          <Box />
         )}
+        {icon && iconPosition === 'left' ? <Box style={{ width: setIconSize() }} /> : <Box />}
       </>
     </ButtonBase>
   );
@@ -261,6 +288,7 @@ const Button: React.FC<ButtonTypes> = ({
   iconColor,
   textColor,
   className,
+  iconPosition,
 }) => {
   return (
     <StyledEngineProvider injectFirst>
@@ -279,6 +307,7 @@ const Button: React.FC<ButtonTypes> = ({
           iconColor={iconColor}
           textColor={textColor}
           className={className}
+          iconPosition={iconPosition}
         >
           {children}
         </ButtonComponent>
