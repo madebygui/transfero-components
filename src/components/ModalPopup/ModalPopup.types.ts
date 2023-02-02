@@ -6,4 +6,7 @@ export interface IModalPopup {
   onConfirm: () => void;
   onCancel: () => void;
   alert?: boolean;
+  confirmText?: string;
+  cancelText?: string;
+  emphasisButton?: 'cancel' | 'confirm';
 }

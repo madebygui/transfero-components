@@ -1,6 +1,6 @@
 {
   "name": "transfero-react-components",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "This is Transfero Components in React.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

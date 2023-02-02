@@ -40,9 +40,13 @@ const TopBarComponent: React.FC<TopBarProps> = ({ title, centerText, width, togg
             />
           )}
 
-          <Typo size='md' color='white' fontWeight='300'>
-            {title}
-          </Typo>
+          {typeof title === 'string' ? (
+            <Typo size='md' color='white' fontWeight='500'>
+              {title}
+            </Typo>
+          ) : (
+            title
+          )}
         </Box>
 
         {centerText && (

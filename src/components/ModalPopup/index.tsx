@@ -8,12 +8,21 @@ import { Typo } from '../Typo';
 import { IModalPopup } from './ModalPopup.types';
 import '../../assets/css/Popup.css';
 
-const ModalPopupComponent: FC<IModalPopup> = ({ title, text, onCancel, onConfirm, alert }) => {
+const ModalPopupComponent: FC<IModalPopup> = ({
+  title,
+  text,
+  onCancel,
+  onConfirm,
+  alert,
+  cancelText,
+  confirmText,
+  emphasisButton = 'cancel',
+}) => {
   const { palette } = useTheme();
 
   return (
     <Box className='overlay' onClick={() => onCancel()}>
-      <Box className='popup'>
+      <Box className='popup' onClick={(e) => e.stopPropagation()}>
         <Typo fontWeight={'300'} size='lg' color={palette.blue[900]} style={globalStyles.mb4}>
           {title}
         </Typo>
@@ -28,16 +37,24 @@ const ModalPopupComponent: FC<IModalPopup> = ({ title, text, onCancel, onConfirm
         {alert ? (
           <Box className='flex-row justify-center'>
             <Button onClick={() => onConfirm()} style={globalStyles.m1}>
-              OK
+              {confirmText || 'OK'}
             </Button>
           </Box>
         ) : (
           <Box className='flex-row justify-center'>
-            <Button onClick={() => onCancel()} style={globalStyles.m1}>
-              No
+            <Button
+              outline={emphasisButton === 'confirm'}
+              onClick={() => onCancel()}
+              style={globalStyles.m1}
+            >
+              {cancelText || 'No'}
             </Button>
-            <Button outline onClick={() => onConfirm()} style={globalStyles.m1}>
-              Yes
+            <Button
+              outline={emphasisButton === 'cancel'}
+              onClick={() => onConfirm()}
+              style={globalStyles.m1}
+            >
+              {confirmText || 'Yes'}
             </Button>
           </Box>
         )}
@@ -46,7 +63,16 @@ const ModalPopupComponent: FC<IModalPopup> = ({ title, text, onCancel, onConfirm
   );
 };
 
-const ModalPopup: React.FC<IModalPopup> = ({ title, text, onCancel, onConfirm, alert }) => {
+const ModalPopup: React.FC<IModalPopup> = ({
+  title,
+  text,
+  onCancel,
+  onConfirm,
+  alert,
+  confirmText,
+  cancelText,
+  emphasisButton,
+}) => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
@@ -56,6 +82,9 @@ const ModalPopup: React.FC<IModalPopup> = ({ title, text, onCancel, onConfirm, a
           onCancel={onCancel}
           onConfirm={onConfirm}
           alert={alert}
+          confirmText={confirmText}
+          cancelText={cancelText}
+          emphasisButton={emphasisButton}
         />
       </ThemeProvider>
     </StyledEngineProvider>

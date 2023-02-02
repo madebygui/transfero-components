@@ -10,9 +10,11 @@ import { Template } from './components/Template';
 import { TopBar } from './components/TopBar';
 import { Typo } from './components/Typo';
 import { Dropdown } from './components/Dropdown';
+import { AutoComplete } from './components/AutoComplete';
 import './assets/css/Main.css';
 
 export {
+  AutoComplete,
   Button,
   PieChart,
   AreaChart,

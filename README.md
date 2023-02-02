@@ -1,4 +1,4 @@
-# 🧩 React - Transfero Components
+# 🧩 React - Transfero React Components
 
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 
@@ -26,7 +26,7 @@ All libraries are installed automatically. No commands are needed.
 
 ## Table of contents
 
-- [React - Transfero Components](#react-transfero-components)
+- [React - Transfero React Components](#react-transfero-react-components)
   - [Prerequisites](#prerequisites)
   - [Table of contents](#table-of-contents)
   - [Getting Started](#getting-started)
@@ -39,10 +39,14 @@ All libraries are installed automatically. No commands are needed.
     - [Install](#install)
   - [Usage](#usage)
     - [Example](#example)
+    - [Autocomplete](#autocomplete)
+      - [props](#autocomplete-props)
     - [Button](#button)
       - [props](#button-props)
     - [Charts](#charts)
       - [props](#charts-props)
+    - [Dropdown](#dropdown)
+      - [props](#dropdown-props)
     - [Icon](#icon)
       - [props](#icon-props)
     - [Input](#input)
@@ -59,6 +63,7 @@ All libraries are installed automatically. No commands are needed.
       - [props](#topbar-props)
     - [Typo](#typo)
       - [props](#typo-props)
+    - [New Icons](#new-icons)
   - [Authors](#authors)
 
 ## Getting Started
@@ -141,7 +146,7 @@ $ npm install transfero-react-components --save
 #### Example
 
 ```js
-import { Loader } from 'transfero-components';
+import { Loader } from 'transfero-react-components';
 
 const App = () => {
   return (
@@ -155,7 +160,7 @@ const App = () => {
 ### Button
 
 ```jsx
-import { Button } from 'transfero-components';
+import { Button } from 'transfero-react-components';
 
 const App = () => {
   return (
@@ -168,24 +173,45 @@ const App = () => {
 
 #### Button Props
 
-| Name      | Type                    | Default | Description                                                                                                                                                                      |
-| --------- | ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| onClick\* | function                |         | Action when user click.                                                                                                                                                          |
-| children  | node                    |         | The content of the component.                                                                                                                                                    |
-| size      | `sm` \| `md` \| `lg`    | md      | The size of the component.                                                                                                                                                       |
-| icon      | [IconTypes](#icontypes) |         | Insert an icon on button. Check [available icons](#icontypes).                                                                                                                   |
-| iconsize  | `sm` \| `md` \| `lg`    | 16      | The icon size of the component. _Only available with icon property._                                                                                                             |
-| outline   | bool                    | false   | If true, the component is styled outline.                                                                                                                                        |
-| disabled  | bool                    | false   | If true, the component is disabled.                                                                                                                                              |
-| theme     | `dark` \| `light`       | light   | The theme of the component. Use `dark` for dark screens ans `light` for light screens                                                                                            |
-| link      | bool                    | false   | If true, the component is formatted as link.                                                                                                                                     |
-| circle    | bool                    | false   | If true, the component is formatted as a circle. _Only available with icon property without children property._                                                                  |
-| style     | CSSProperties           |         | The system prop that allows defining system overrides as well as additional CSS styles. See the [sx page](https://mui.com/system/getting-started/the-sx-prop/) for more details. |
-| iconColor | string                  |         | The color of the icon. _Only available with icon property._                                                                                                                      |
-| textColor | string                  |         | Override the text color of the component.                                                                                                                                        |
-| className | string                  |         | Override or extend the styles applied to the component.                                                                                                                          |
+| Name         | Type                    | Default | Description                                                                                                                                                                      |
+| ------------ | ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| onClick\*    | function                |         | Action when user click.                                                                                                                                                          |
+| children     | node                    |         | The content of the component.                                                                                                                                                    |
+| size         | `sm` \| `md` \| `lg`    | md      | The size of the component.                                                                                                                                                       |
+| icon         | [IconTypes](#icontypes) |         | Insert an icon on button. Check [available icons](#icontypes).                                                                                                                   |
+| iconsize     | `sm` \| `md` \| `lg`    | 16      | The icon size of the component. _Only available with icon property._                                                                                                             |
+| iconPosition | `left` \| `right`       | `right` | The icon position of the component. _Only available with icon property._                                                                                                         |
+| outline      | bool                    | false   | If true, the component is styled outline.                                                                                                                                        |
+| disabled     | bool                    | false   | If true, the component is disabled.                                                                                                                                              |
+| theme        | `dark` \| `light`       | light   | The theme of the component. Use `dark` for dark screens ans `light` for light screens                                                                                            |
+| link         | bool                    | false   | If true, the component is formatted as link.                                                                                                                                     |
+| circle       | bool                    | false   | If true, the component is formatted as a circle. _Only available with icon property without children property._                                                                  |
+| style        | CSSProperties           |         | The system prop that allows defining system overrides as well as additional CSS styles. See the [sx page](https://mui.com/system/getting-started/the-sx-prop/) for more details. |
+| iconColor    | string                  |         | The color of the icon. _Only available with icon property._                                                                                                                      |
+| textColor    | string                  |         | Override the text color of the component.                                                                                                                                        |
+| className    | string                  |         | Override or extend the styles applied to the component.                                                                                                                          |
 
 > \* Required
+
+### New Icons
+
+To add new icons follow the next steps:
+
+- Access the icon repo in [Figma](#https://www.figma.com/file/vjAIRaNuxdtOFgUQEQz6cE/%C3%8Dcones-Prime-More?node-id=0%3A1&t=Fm2FSBqzBpZysqar-1)
+- Create new icons
+  - Create a component with 32px X 32px
+  - Rename the icon component
+  - Change colors to #000000
+  - Remove strokes, if it's possible
+- Export _all_ icons in SVG format
+- Access [IcoMoon App](#https://icomoon.io/app)
+- Drag all SVG images to dashboard
+- Select all images
+- Click in _Generate Font_
+- Click in _Font Download_
+- Extract the zip file content
+- Replace `selection.json` in `src/components/Icon`
+- Add the icon names in `src/config/types/iconTypes.types.ts`
 
 ## Contributing
 

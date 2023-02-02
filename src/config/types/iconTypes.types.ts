@@ -72,4 +72,6 @@ export type IconTypes =
   | 'support'
   | 'tune'
   | 'plus-circle'
-  | 'edit';
+  | 'edit'
+  | 'filter-filled'
+  | 'filter-disable';
