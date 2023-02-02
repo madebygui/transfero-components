@@ -74,4 +74,5 @@ export type IconTypes =
   | 'plus-circle'
   | 'edit'
   | 'filter-filled'
-  | 'filter-disable';
+  | 'filter-disable'
+  | 'wallet';
