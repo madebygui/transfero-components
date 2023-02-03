@@ -75,4 +75,5 @@ export type IconTypes =
   | 'edit'
   | 'filter-filled'
   | 'filter-disable'
-  | 'wallet';
+  | 'wallet'
+  | 'double-chevron-left';

@@ -25,6 +25,7 @@ const InputComponent: FC<InputProps> = ({
   style,
   inputStyle,
   iconLeft,
+  onEnterClick,
 }) => {
   const { palette } = useTheme();
 
@@ -206,6 +207,7 @@ const InputComponent: FC<InputProps> = ({
         variant='standard'
         value={value}
         onChange={(text) => changeValue(text.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && onEnterClick && onEnterClick()}
         autoCapitalize={autoCapitalize}
         multiline={multline}
         fullWidth
@@ -244,6 +246,7 @@ const Input: FC<InputProps> = ({
   style,
   inputStyle,
   iconLeft,
+  onEnterClick,
 }) => {
   return (
     <StyledEngineProvider injectFirst>
@@ -265,6 +268,7 @@ const Input: FC<InputProps> = ({
           style={style}
           inputStyle={inputStyle}
           iconLeft={iconLeft}
+          onEnterClick={onEnterClick}
         />
       </ThemeProvider>
     </StyledEngineProvider>

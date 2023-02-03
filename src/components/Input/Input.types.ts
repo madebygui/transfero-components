@@ -24,4 +24,5 @@ export interface InputProps {
   title: string;
   error?: string;
   password?: boolean;
+  onEnterClick?: () => void;
 }
