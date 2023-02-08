@@ -9,4 +9,5 @@ export interface IModalPopup {
   confirmText?: string;
   cancelText?: string;
   emphasisButton?: 'cancel' | 'confirm';
+  disableOutsideClick?: boolean;
 }

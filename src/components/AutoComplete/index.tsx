@@ -18,6 +18,8 @@ const AutoCompleteComponent: React.FC<AutoCompleteProps> = ({
   items,
   title,
   style,
+  disableClearable,
+  onTextChange,
 }) => {
   const { palette } = useTheme();
   const [isFocused, setIsFocused] = useState(false);
@@ -39,6 +41,7 @@ const AutoCompleteComponent: React.FC<AutoCompleteProps> = ({
       onChange={(_e, v) => onChangeText(v || '')}
       inputValue={search}
       sx={{ ...style }}
+      disableClearable={disableClearable}
       onInputChange={(_event, v) => {
         setSearch(v);
       }}
@@ -57,6 +60,7 @@ const AutoCompleteComponent: React.FC<AutoCompleteProps> = ({
             {...params}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+            onChange={(v) => onTextChange && onTextChange(v)}
             placeholder={placeholder}
             variant='standard'
             fullWidth
@@ -78,6 +82,8 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
   items,
   title,
   style,
+  disableClearable,
+  onTextChange,
 }) => {
   return (
     <StyledEngineProvider injectFirst>
@@ -89,6 +95,8 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
           items={items}
           title={title}
           style={style}
+          disableClearable={disableClearable}
+          onTextChange={onTextChange}
         />
       </ThemeProvider>
     </StyledEngineProvider>

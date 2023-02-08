@@ -17,11 +17,12 @@ const ModalPopupComponent: FC<IModalPopup> = ({
   cancelText,
   confirmText,
   emphasisButton = 'cancel',
+  disableOutsideClick,
 }) => {
   const { palette } = useTheme();
 
   return (
-    <Box className='overlay' onClick={() => onCancel()}>
+    <Box className='overlay' onClick={() => !disableOutsideClick && onCancel()}>
       <Box className='popup' onClick={(e) => e.stopPropagation()}>
         <Typo fontWeight={'300'} size='lg' color={palette.blue[900]} style={globalStyles.mb4}>
           {title}
@@ -72,6 +73,7 @@ const ModalPopup: React.FC<IModalPopup> = ({
   confirmText,
   cancelText,
   emphasisButton,
+  disableOutsideClick,
 }) => {
   return (
     <StyledEngineProvider injectFirst>
@@ -85,6 +87,7 @@ const ModalPopup: React.FC<IModalPopup> = ({
           confirmText={confirmText}
           cancelText={cancelText}
           emphasisButton={emphasisButton}
+          disableOutsideClick={disableOutsideClick}
         />
       </ThemeProvider>
     </StyledEngineProvider>
